@@ -17,25 +17,51 @@ const WORDS = [
 
 const numWrong = 0;
 
-// Loop over the chars in `word` and create divs.xww
+// Loop over the chars in `word` and create divs.
 //
 const createDivsForChars = word => {
-  // Replace this with your code
+  
+  const container = document.querySelector('#word-container')
+  //loop start
+  for (const letter of word) {
+    container.insertAdjacentHTML(
+      'beforeend',
+      `<div class="letter-box ${letter}"></div>`
+    );
+  }
 };
 
 // Loop over each letter in the alphabet and generate a button
 // for each letter
 const generateLetterButtons = () => {
-  // Replace this with your code
+
+  const container = document.querySelector('#letter-buttons')
+  //loop start
+  for (const letter of ALPHABET) {
+    container.insertAdjacentHTML(
+      'beforeend',
+      `<button>${letter}</button>`
+    );
+  }
 };
+
 
 // Set the `disabled` property of `buttonEl` to `true.
 //
 // `buttonEl` is an `HTMLElement` object.
 //
 const disableLetterButton = buttonEl => {
-  // Replace this with your code
+  // buttonEl.setAttribute('disabled', 'true')
+  buttonEl.disabled=true;
 };
+
+// disableLetterButton=e=>{e.disabled=!0}
+// const btn = document.querySelector('button')
+// btn.disabled=true;
+// btn.disabled=false;
+// disableLetterButton(btn)
+
+
 
 // This is a helper function we will use in the future
 // It should return `true` if `letter` is in the word
@@ -43,6 +69,7 @@ const disableLetterButton = buttonEl => {
 
 const isLetterInWord = letter => {
   // Replace this with your code
+  return document.querySelector(`div.${letter}`) !== null
 };
 
 // This is like if __name__ == '__main__' in Python
@@ -56,11 +83,12 @@ const isLetterInWord = letter => {
   const word = 'hello';
 
   // call the function that makes an empty line for each letter in the word
-  // Replace this line with the function call
+  createDivsForChars(word)
 
   // call the function that makes a button for each letter in the alphabet
-  // Replace this line with the function call
+  generateLetterButtons()
 
   // in the next lab, you will be adding functionality to handle when
   // someone clicks on a letter
+
 })();
